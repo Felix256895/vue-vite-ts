@@ -1,1 +1,1 @@
-# vue-vite-ts
+# Vue 3 + TypeScript + Vite
