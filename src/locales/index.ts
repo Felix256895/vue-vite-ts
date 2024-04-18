@@ -1,12 +1,12 @@
-import { createI18n } from 'vue-i18n';
-import { useAppStoreHook } from '@/store'
-import en from './lang/en';
-import zhCn from './lang/zh-cn';
+import { createI18n } from "vue-i18n";
+import { useAppStoreHook } from "@/store";
+import en from "./lang/en";
+import zhCn from "./lang/zh-cn";
 
 const appStore = useAppStoreHook();
 
 const messages = {
-  'zh-cn': {
+  "zh-cn": {
     ...zhCn,
   },
   en: {

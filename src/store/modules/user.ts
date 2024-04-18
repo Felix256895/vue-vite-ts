@@ -1,35 +1,36 @@
-import { defineStore } from 'pinia';
-import { AxiosResponse } from 'axios';
-import { loginApi } from '@/api/auth';
-import { LoginData, LoginResult } from '@/api/auth/types';
-import { localStg } from '@/utils/storage';
-import { store } from '@/store'
+import { defineStore } from "pinia";
+import { AxiosResponse } from "axios";
+import { loginApi } from "@/api/auth";
+import { LoginData, LoginResult } from "@/api/auth/types";
+import { localStg } from "@/utils/storage";
+import { store } from "@/store";
 
-export const useUserStore = defineStore('user', () => {
-
+export const useUserStore = defineStore("user", () => {
   function login(loginData: LoginData): Promise<unknown> {
     return new Promise<void>((resolve, reject) => {
-      loginApi(loginData).then((res: AxiosResponse<LoginResult, any>) => {
-        const { accessToken, tokenType } = res.data;
-        localStg.set('accessToken', `${tokenType} ${accessToken}`);
-        resolve();
-      }).catch((error: Error) => {
-        reject(error);
-      });
+      loginApi(loginData)
+        .then((res: AxiosResponse<LoginResult, any>) => {
+          const { accessToken, tokenType } = res.data;
+          localStg.set("accessToken", `${tokenType} ${accessToken}`);
+          resolve();
+        })
+        .catch((error: Error) => {
+          reject(error);
+        });
     });
-  };
+  }
 
   function resetToken() {
     return new Promise<void>((resolve) => {
-      localStg.remove('accessToken')
-      resolve()
-    })
+      localStg.remove("accessToken");
+      resolve();
+    });
   }
 
   return {
     login,
-    resetToken
-  }
+    resetToken,
+  };
 });
 
 export function useUserStoreHook() {

@@ -1,5 +1,5 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>Home {{ $t('login.username') }}</div>
+  <div>Home {{ $t("login.username") }}</div>
 </template>

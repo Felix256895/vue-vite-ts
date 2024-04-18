@@ -1,15 +1,15 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
 export const constantRoutes: RouteRecordRaw[] = [
   {
-    path: '/login',
-    component: () => import('@/views/login/index.vue'),
+    path: "/login",
+    component: () => import("@/views/login/index.vue"),
     meta: { hidden: true },
   },
   {
-    path: '/',
-    name: '/',
-    component: () => import('@/views/dashboard/index.vue')
+    path: "/",
+    name: "/",
+    component: () => import("@/views/dashboard/index.vue"),
   },
 ];
 
