@@ -1,3 +1,4 @@
 import login from "./login";
+import language from "./language";
 
-export default { login };
+export default { login, language };

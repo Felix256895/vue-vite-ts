@@ -8,15 +8,21 @@ export const useAppStore = defineStore("app", () => {
   const language = useStorage("language", "en");
 
   const locale = computed(() => {
-    if (language?.value == "en") {
+    if (language?.value === "en") {
       return en;
     } else {
       return zhCn;
     }
   });
+
+  function changeLanguage(val: string) {
+    language.value = val;
+  }
+
   return {
     language,
     locale,
+    changeLanguage,
   };
 });
 

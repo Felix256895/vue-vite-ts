@@ -1,5 +1,6 @@
 import { defineConfig, ConfigEnv, UserConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
+import vueJsx from "@vitejs/plugin-vue-jsx";
 import path from "path";
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
@@ -29,14 +30,19 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
     },
     plugins: [
       vue(),
+      vueJsx(),
       // 自动导入vue相关函数
       AutoImport({
         imports: ["vue"],
+        resolvers: [
+          // 自动导入 Element Plus 相关函数
+          ElementPlusResolver(),
+        ],
+        vueTemplate: true,
         eslintrc: {
           enabled: true,
           filepath: "./.eslintrc-auto-import.json",
         },
-        vueTemplate: true,
         dts: path.resolve(pathSrc, "types", "auto-import.d.ts"),
       }),
       // 自动导入组件ts类型声明
